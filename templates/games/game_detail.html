@@ -1,19 +1,23 @@
 {% extends '_base_.html' %}
+{% load static %}
 
 {% block title %}{{ game.name }}{% endblock title %}
 
 {% block content %}
   <div class="game-detail">
-    <h2><a href="">{{ game.name }}</a></h2>
+    {% if game.cover %}
+      <img class="gamecover" src="{{ game.cover.url }}" alt="{{ game.name }}">
+    {% endif %}
+      <h2><a href="">{{ game.name }}</a></h2>
     <p>Author: {{ game.author }}</p>
     <p>Price: {{ game.price }}</p>
-  <div>
+    <div>
       <h3>Reviews</h3>
       <ul>
           {% for review in game.reviews.all %}
               <li>{{ review.review }} ({{ review.author }})</li>
           {% endfor %}
       </ul>
-  </div>
+    </div>
   </div>
 {% endblock content %}

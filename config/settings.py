@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from environs import Env # new
 
@@ -153,3 +154,7 @@ ACCOUNT_EMAIL_REQUIRED = True # new
 ACCOUNT_UNIQUE_EMAIL = True # new
 
 DEFAULT_FROM_EMAIL = 'admin@djangogamestore.com' # new
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
