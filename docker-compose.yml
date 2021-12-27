@@ -11,8 +11,8 @@ services:
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=)*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n"
-      - "DJANGO_DEBUG=True"
+      - STRIPE_TEST_PUBLISHABLE_KEY=pk_test_51KBJaMLOM5jBHloonKg32SwP01RutBbGxGSO4aYlSDozE1jh8eNSiISY1VRuOB2MNuBHvLDqUkIvHYgXmrtLKwYc00j79pXF6N
+      - STRIPE_TEST_SECRET_KEY=sk_test_51KBJaMLOM5jBHlooauzfk2vY4VsXGK74cJQGIdBznYUA4l5R5wg1CMItOGKoU4eTIjGffSMp0Xx45kHGB3fjY3b000vdDwb985
   db:
     image: postgres:11
     volumes:

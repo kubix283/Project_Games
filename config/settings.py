@@ -1,13 +1,12 @@
 import os
 from pathlib import Path
-from environs import Env # new
+from environs import Env  # new
 
-env = Env() # new
-env.read_env() # new
+env = Env()  # new
+env.read_env()  # new
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -18,8 +17,7 @@ SECRET_KEY = ')*_s#exg*#w+#-xt=vu8b010%%a&p@4edwyj0=(nqq90b9a8*n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -30,17 +28,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # new
+    'django.contrib.sites',  # new
 
     # Third-party
-    'crispy_forms', # new
-    'allauth', # new
-    'allauth.account', # new
+    'crispy_forms',  # new
+    'allauth',  # new
+    'allauth.account',  # new
 
     # Local
-    'accounts', # new
-    'pages', # new
-    'games', # new
+    'orders',
+    'accounts',  # new
+    'pages',  # new
+    'games',  # new
 ]
 
 MIDDLEWARE = [
@@ -58,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR.joinpath('templates'))], # new
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],  # new
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,19 +72,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'projectgames',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
+    "default": env.dj_db_url("DATABASE_URL", default="postgres://postgres@db/postgres")
 }
 
 # Password validation
@@ -106,7 +97,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
@@ -120,41 +110,44 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] # new
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # new
-STATICFILES_FINDERS = [ # new
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]  # new
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))  # new
+STATICFILES_FINDERS = [  # new
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-AUTH_USER_MODEL = 'accounts.CustomUser' # new
+AUTH_USER_MODEL = 'accounts.CustomUser'  # new
 
 # django-crispy-forms
-CRISPY_TEMPLATE_PACK = 'bootstrap4' # new
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # new
 
 # django-allauth config
 LOGIN_REDIRECT_URL = 'home'
-ACCOUNT_LOGOUT_REDIRECT = 'home' # new
-SITE_ID = 1 # new
+ACCOUNT_LOGOUT_REDIRECT = 'home'  # new
+SITE_ID = 1  # new
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend', # new
+    'allauth.account.auth_backends.AuthenticationBackend',  # new
 )
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new
 # ACCOUNT_SESSION_REMEMBER = True # new
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False # new
-ACCOUNT_USERNAME_REQUIRED = True # new
-ACCOUNT_AUTHENTICATION_METHOD = 'email' # new
-ACCOUNT_EMAIL_REQUIRED = True # new
-ACCOUNT_UNIQUE_EMAIL = True # new
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # new
+ACCOUNT_USERNAME_REQUIRED = True  # new
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # new
+ACCOUNT_EMAIL_REQUIRED = True  # new
+ACCOUNT_UNIQUE_EMAIL = True  # new
 
-DEFAULT_FROM_EMAIL = 'admin@djangogamestore.com' # new
-
+DEFAULT_FROM_EMAIL = 'admin@djangogamestore.com'  # new
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get(
+    'STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get(
+    'STRIPE_TEST_SECRET_KEY')

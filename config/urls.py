@@ -13,6 +13,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')), # new
 
     # Local apps
+
     path('', include('pages.urls')),
+    path('orders/', include('orders.urls')),
     path('games/', include('games.urls')), # new
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
