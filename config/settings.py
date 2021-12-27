@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from environs import Env  # new
 
 env = Env()  # new
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',  # new
 
     # Third-party
+    'debug_toolbar',
     'crispy_forms',  # new
     'allauth',  # new
     'allauth.account',  # new
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -151,3 +154,7 @@ STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get(
     'STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get(
     'STRIPE_TEST_SECRET_KEY')
+
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
