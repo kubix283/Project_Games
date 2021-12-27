@@ -1,0 +1,14 @@
+{% extends '_base_.html'%}
+{% block title %} Search {% endblock title %}
+
+{% block content %}
+<h1>Search Results</h1>
+{% for game in game_list %}
+    <div>
+        <h3><a href="{{ game.get_absolute_url }}">{{ game.name }}</a></h3>
+        <p><img class="gamecover" src="{{ game.cover.url }}" alt="{{ game.name}}""></p>
+        <p>Author: {{ game.author }}</p>
+        <p>Price: $ {{ game.price }}</p>
+    </div>
+{% endfor %}
+{% endblock content %}
