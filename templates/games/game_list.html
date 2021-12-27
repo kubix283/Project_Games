@@ -3,6 +3,9 @@
 {% block title %}Games{% endblock title %}
 
 {% block content %}
+    {% if not perms.games.special_status %}
+        <a href="{% url 'orders' %}" class="btn btn-outline-success">Purchase All Games</a>
+    {% endif %}
   {% for game in game_list %}
     <div>
       <h2><a href="{{ game.get_absolute_url }}">{{ game.name }}</a></h2>

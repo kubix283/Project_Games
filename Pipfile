@@ -12,6 +12,7 @@ django-crispy-forms = "==1.9.2"
 django-allauth = "==0.42.0"
 pillow = "==8.4.0"
 stripe = "==2.64.0"
+password = "*"
 
 [requires]
 python_version = "3.8"
