@@ -10,13 +10,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # User management
-    path('accounts/', include('allauth.urls')), # new
+    path('accounts/', include('allauth.urls')),
 
     # Local apps
 
     path('', include('pages.urls')),
     path('orders/', include('orders.urls')),
-    path('games/', include('games.urls')), # new
+    path('games/', include('games.urls')),
+    path('forum/', include('forum.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

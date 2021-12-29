@@ -12,16 +12,16 @@ class Game(models.Model):
         editable=False
     )
     TYPE_OF_GAMES = [
-        ('UDF', 'Undefined'),
-        ('AC', 'Action'),
-        ('AC-ADV', 'Action-adventure'),
-        ('ADV', ' Adventure'),
-        ('RP', 'Role-playing'),
-        ('SM', 'Simulation'),
-        ('STR', 'Strategy'),
-        ('SPO', 'Sports'),
+        ('Undefined', 'Undefined'),
+        ('Action', 'Action'),
+        ('Action-adventure', 'Action-adventure'),
+        ('Adventure', ' Adventure'),
+        ('Role-playing', 'Role-playing'),
+        ('Simulation', 'Simulation'),
+        ('Strategy', 'Strategy'),
+        ('Sports', 'Sports'),
         ('MMO', 'MMO'),
-        ('SB', 'Sandbox')
+        ('Sandbox', 'Sandbox')
     ]
     PLATFORMS = [
         ('Windows', 'Windows'),
@@ -32,7 +32,7 @@ class Game(models.Model):
     ]
     name = models.CharField(max_length=64)
     author = models.CharField(max_length=64)
-    type = models.CharField(max_length=6, choices=TYPE_OF_GAMES, default='UDF')
+    type = models.CharField(max_length=16, choices=TYPE_OF_GAMES, default='Undefined')
     platforms = models.CharField(max_length=8, choices=PLATFORMS, default='Windows')
     producents = models.CharField(max_length=64)
     publishers = models.CharField(max_length=64)
@@ -57,3 +57,4 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review
+

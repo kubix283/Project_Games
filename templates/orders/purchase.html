@@ -2,7 +2,7 @@
 {% block title %} Orders {% endblock title %}
 {% block content %}
 <h1>Orders page</h1>
-    <p> Buy for $39.00</p>
+    <p> Wykup dostep do gier za $39.00</p>
     <form action="{% url 'charge' %}" method="post">
     {% csrf_token %}
         <script src="https://checkout.stripe.com/checkout.js"

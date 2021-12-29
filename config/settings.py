@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'allauth.account',  # new
 
     # Local
+    'forum',
     'orders',
     'accounts',  # new
     'pages',  # new
