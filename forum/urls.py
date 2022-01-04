@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import ForumHomeView, AboutMinecraftGameView
+from .views import ForumHomeView, ForumPoradyView, PoradyDodajView
 
 urlpatterns = [
     path('', ForumHomeView.as_view(), name='forum_home'),
-    path('about/<uuid:pk>', AboutMinecraftGameView.as_view(), name='about_minecraft_game')
+    path('porady/', ForumPoradyView.as_view(), name='forum_porady'),
+    path('porady/dodaj', PoradyDodajView.as_view(), name='dodaj_porady')
+
 ]
