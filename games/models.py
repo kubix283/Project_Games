@@ -58,3 +58,12 @@ class Review(models.Model):
     def __str__(self):
         return self.review
 
+class Porada(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    title = models.CharField(max_length=264)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+

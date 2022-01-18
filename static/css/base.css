@@ -12,4 +12,18 @@ h1 {
   width: auto;
 
 }
+form.home button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
 
+form.home button:hover {
+  background: #0b7dda;
+}

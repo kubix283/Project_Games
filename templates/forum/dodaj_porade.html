@@ -1,0 +1,10 @@
+{% extends '_base_.html'%}
+{% block title %} Porady {{ porady.name }} {% endblock title %}
+
+{% block content %}
+{% for foo in porady %}
+    <li>{{ foo.id }}</li>
+
+{% endfor %}
+
+{% endblock content %}

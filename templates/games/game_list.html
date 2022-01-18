@@ -11,4 +11,5 @@
       <h2><a href="{{ game.get_absolute_url }}">{{ game.name }}</a></h2>
     </div>
   {% endfor %}
+    <a class="btn btn-dark" href="{% url 'add_game' %}">Add Game</a>
 {% endblock content %}

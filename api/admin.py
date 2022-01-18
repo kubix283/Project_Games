@@ -1,4 +1,3 @@
 from django.contrib import admin
 
-from .models import ForumPorady
-
+# Register your models here.

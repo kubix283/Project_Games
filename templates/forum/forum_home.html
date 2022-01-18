@@ -5,7 +5,7 @@
     <ul class="list-group list-group-horizontal-lg">
         <li class="list-group-item">{{ game.name }} Gatunek: {{ game.type }}</li>
             <li class="text-secondary"><a href="{{ game.get_absolute_url }}"> O grze</a> {{ game.name }}</li>
-            <li class="text-secondary"><a href=""> Porady</a> {{ game.name }}</li>
+            <li class="text-secondary"><a href="{% url 'porada_szczegoly' game.pk %}"> Porady</a> {{ game.name }}</li>
             <li class="text-secondary"><a href=""> Media</a> {{ game.name }}</li>
 
 
